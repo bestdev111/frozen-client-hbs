@@ -1,0 +1,34 @@
+<!-- BEGIN: Add School Modal -->
+<div id="header-footer-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
+    <form class="modal__content validate-form" action="/consultations?" method="POST">
+        <div class="flex items-center px-5 py-5 sm:py-3 border-b border-gray-200 dark:border-dark-5">
+            <h2 class="font-medium text-base mr-auto">Ajouter une école</h2>
+        </div>
+        <div class="p-5 grid grid-cols-12 gap-4 row-gap-3">
+            <div class="col-span-12 sm:col-span-6">
+                <label>Nom</label>
+                <input type="text" id="name" name="name" class="input w-full border mt-2 flex-1" placeholder="Ecole" required minlength="2">
+            </div> <div class="col-span-12 sm:col-span-6">
+                <label>Addresse</label>
+                <input type="text" id="address" name="address" class="input w-full border mt-2 flex-1" placeholder="42, Avenue Révolution, Kinshasa, Ngaliema">
+            </div>
+            <div class="col-span-12 sm:col-span-6">
+                <label>Site web</label>
+                <input type="url" id="website" name="website" class="input w-full border mt-2 flex-1" placeholder="http://example.com">
+            </div>
+            <div class="col-span-12 sm:col-span-6">
+                <label>Email</label>
+                <input type="email" id="email" name="email" class="input w-full border mt-2 flex-1" placeholder="johndoe@example.com">
+            </div>
+            <div class="col-span-12 sm:col-span-6">
+                <label>SECOPE</label>
+                <input type="text" id="secope" name="secope" class="input w-full border mt-2 flex-1" placeholder="Secope">
+            </div>
+        </div>
+        <div class="px-5 py-3 text-right border-t border-gray-200 dark:border-dark-5">
+            <button type="button" class="button w-20 border text-gray-700 dark:border-dark-5 dark:text-gray-300 mr-1" data-dismiss="modal">Annuler</button>
+            <button type="submit" class="button w-20 bg-theme-1 text-white">Ajouter</button>
+        </div>
+    </form>
+</div>
+<!-- END: Add School Modal -->

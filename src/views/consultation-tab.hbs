@@ -1,0 +1,172 @@
+{{#if (eq consultation.status 'EN_COURS')}}
+<div id="main-tab" class="tab-pane active" role="tabpanel" aria-labelledby="consultation-tab">
+  <div type="text" class="intro-y py-3 px-4 box pr-10 placeholder-theme-13">
+    <a class="btn w-24 mr-1 mb-2" data-toggle="modal" data-target="#prescription-modal">Prescription</a>
+    <a class="btn w-24 mr-1 mb-2" data-toggle="modal" data-target="#exams-modal">Examens</a>
+    <a class="btn w-24 mr-1 mb-2" data-toggle="modal" data-target="#imagery-modal">Imagerie</a>
+    <button class="btn btn-warning w-24 mr-1 mb-2">Clôturer</button>
+  </div>
+  <div class="post intro-y grid grid-cols-12 gap-5 mt-5">
+    <!-- BEGIN: Post Content -->
+    <div class="intro-y col-span-12 lg:col-span-8">
+        <div class="post intro-y overflow-hidden box mt-5">
+            <div class="post__tabs nav nav-tabs flex-col sm:flex-row bg-gray-300 dark:bg-dark-2 text-gray-600" role="tablist">
+                <a title="Prennez vos notes de consultation" data-toggle="tab" data-target="#content" href="javascript:;" class="tooltip w-full sm:w-40 py-4 text-center flex justify-center items-center active" id="content-tab" role="tab" aria-controls="content" aria-selected="true"> <i data-feather="file-text" class="w-4 h-4 mr-2"></i> Notes </a>
+            </div>
+            <div class="post__con t gtent tab-content">
+                <div id="content" class="tab-pane p-5 active" role="tabpanel" aria-labelledby="content-tab">
+                    <form class="border border-gray-200 dark:border-dark-5 rounded-md p-5" id="consultation-notes-form" action="/consultations/{{consultation.id}}?_method=PUT" method="POST">
+                        <div class="font-medium flex items-center border-b border-gray-200 dark:border-dark-5 pb-5"> <i data-feather="chevron-down" class="w-4 h-4 mr-2"></i> Text Content </div>
+                        <div class="mt-5">
+                            <div class="editor">
+                                {{#each consultationNotes as |note|}}
+                                <p>{{ note }}</p>
+                                {{/each}}
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-5 w-24 mr-1 mb-2">Enregistrer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END: Post Content -->
+
+    <!-- BEGIN: Announcement -->
+    <div class="intro-y box col-span-12 xxl:col-span-4">
+        <div class="flex items-center px-5 py-3 border-b border-gray-200 dark:border-dark-5">
+            <h2 class="font-medium text-base mr-auto">Prescriptions</h2>
+            <button data-carousel="prescriptions" data-target="prev" class="tiny-slider-navigator btn btn-outline-secondary px-2 mr-2"> <i data-feather="chevron-left" class="w-4 h-4"></i> </button>
+            <button data-carousel="prescriptions" data-target="next" class="tiny-slider-navigator btn btn-outline-secondary px-2"> <i data-feather="chevron-right" class="w-4 h-4"></i> </button>
+        </div>
+        <div class="tiny-slider py-5" id="prescriptions">
+            {{#each prescriptions as |prescription|}}
+            <div class="px-5">
+                <div class="font-medium text-md">Prescription</div>
+                <table class="table">
+                    <thead>
+                        <tr class="bg-gray-700 dark:bg-dark-1 text-white">
+                            <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Produit</th>
+                            <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Dosage</th>
+                            <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Pendant x jours</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each prescription.items as |item|}}
+                        <tr>
+                            <td class="border">{{ item.produit }}</td>
+                            <td class="border">{{ item.quantite }} {{ item.unite }} {{ item.dosage }} fois par Jour</td>
+                            <td class="border">{{ item.duree }}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+                <div class="flex items-center mt-5">
+                    <div class="px-3 py-2 bg-theme-14 dark:bg-dark-5 dark:text-gray-300 text-theme-10 rounded font-medium">{{ prescription.date }}</div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    <!-- END: Announcement -->
+
+    <!-- BEGIN: Announcement -->
+    <div class="intro-y box col-span-12 xxl:col-span-6">
+        <div class="flex items-center px-5 py-3 border-b border-gray-200 dark:border-dark-5">
+            <h2 class="font-medium text-base mr-auto">
+                Examens de laboratoire
+            </h2>
+            <button data-carousel="exam-orders" data-target="prev" class="tiny-slider-navigator btn btn-outline-secondary px-2 mr-2"> <i data-feather="chevron-left" class="w-4 h-4"></i> </button>
+            <button data-carousel="exam-orders" data-target="next" class="tiny-slider-navigator btn btn-outline-secondary px-2"> <i data-feather="chevron-right" class="w-4 h-4"></i> </button>
+        </div>
+        <div class="tiny-slider py-5" id="exam-orders">
+            {{#each labExamOrders}}
+            <div class="px-5">
+                <div class="font-medium text-md">Examens</div>
+                <div class="preview">
+                    <table class="table">
+                        <thead>
+                        <tr class="bg-gray-700 dark:bg-dark-1 text-white">
+                            <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Catégorie</th>
+                            <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Examen</th>
+                            <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Résultat</th>
+                            <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Valeur de référence</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {{#each items as |orderItem|}}
+                                {{#eachExtended orderItem.exams}}
+                                <tr>
+                                    {{#if @first}}
+                                    <td class="border" rowspan="{{ @length }}">{{ orderItem.category }}</td>
+                                    {{/if}}
+                                    <td class="border">{{ @value }}</td>
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                </tr>
+                                {{/eachExtended}}
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="flex items-center mt-5">
+                    <div class="px-3 py-2 bg-theme-14 dark:bg-dark-5 dark:text-gray-300 text-theme-10 rounded font-medium">{{ creationDate }}</div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    <!-- END: Announcement -->
+
+    <!-- BEGIN: Announcement -->
+    <div class="intro-y box col-span-12 xxl:col-span-6">
+        <div class="flex items-center px-5 py-3 border-b border-gray-200 dark:border-dark-5">
+            <h2 class="font-medium text-base mr-auto">
+                Examens d'imagerie
+            </h2>
+            <button data-carousel="imagery-exam-orders" data-target="prev" class="tiny-slider-navigator btn btn-outline-secondary px-2 mr-2"> <i data-feather="chevron-left" class="w-4 h-4"></i> </button>
+            <button data-carousel="imagery-exam-orders" data-target="next" class="tiny-slider-navigator btn btn-outline-secondary px-2"> <i data-feather="chevron-right" class="w-4 h-4"></i> </button>
+        </div>
+        <div class="tiny-slider py-5" id="imagery-exam-orders">
+            {{#each imageryExamOrders}}
+            <div class="px-5">
+                <div class="font-medium text-md">Examens</div>
+                <div class="preview">
+                    <table class="table">
+                        <thead>
+                        <tr class="bg-gray-700 dark:bg-dark-1 text-white">
+                            <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Catégorie</th>
+                            <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Examen</th>
+                            <th class="border border-b-2 dark:border-dark-5 whitespace-nowrap">Résultat</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {{#each items as |orderItem|}}
+                                {{#eachExtended orderItem.exams}}
+                                <tr>
+                                    {{#if @first}}
+                                    <td class="border" rowspan="{{ @length }}">{{ orderItem.category }}</td>
+                                    {{/if}}
+                                    <td class="border">{{ @value }}</td>
+                                    <td class="border"></td>
+                                </tr>
+                                {{/eachExtended}}
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="flex items-center mt-5">
+                    <div class="px-3 py-2 bg-theme-14 dark:bg-dark-5 dark:text-gray-300 text-theme-10 rounded font-medium">{{ creationDate }}</div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    <!-- END: Announcement -->
+  </div>
+
+  {{> prescription-dialog }}
+  {{> exams-order-dialog }}
+  {{> imagery-exams-order-dialog }}
+</div>
+{{/if}}

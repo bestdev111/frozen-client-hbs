@@ -1,0 +1,10 @@
+{{#if (eq consultation.status 'EN_ATTENTE')}}
+<div id="main-tab" class="tab-pane active" role="tabpanel" aria-labelledby="consultation-tab">
+  <div type="text" class="intro-y py-3 px-4 box pr-10 placeholder-theme-13">
+    <form method="POST" action="/consultations/{{consultation.id}}/move_to_in_progress?_method=PUT">
+      <input type="hidden" name="doctorId" id="doctorId" value="{{ doctor.id }}">
+      <button class="btn btn-primary mr-1 mb-2">Démarrer la consultation</button>
+    </form>
+  </div>
+</div>
+{{/if}}

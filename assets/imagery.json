@@ -1,0 +1,14 @@
+[
+  {
+    "category": "Echographie",
+    "exams": [
+      { "name": "Echographie obstétrique" },
+      { "name": "Echographie pelvienne" },
+      { "name": "Echographie scrotale" },
+      { "name": "Echographie mammaire" },
+      { "name": "Echographie abdominale" },
+      { "name": "Echographie abdomino-pelvienne" },
+      { "name": "Echographie de la masse" }
+    ]
+  }
+]

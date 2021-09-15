@@ -1,0 +1,55 @@
+<script>
+    function onPageLinkClick(index, total) {
+        if (total === 0) return;
+        
+        const link = document.createElement('a');
+        const pageSize = document.getElementById('page-size').value;
+        link.href = `/consultations?selectedPage=${index}&pageSize=${pageSize}`;
+        
+        link.click();
+    }
+
+    function onMoveFirstClick(total) {
+        if (total === 0) return;
+
+        const link = document.createElement('a');
+        const pageSize = document.getElementById('page-size').value;
+        link.href = `/consultations?&pageSize=${pageSize}`;
+
+        link.click();
+    }
+
+    function onPreviousPageClick(selectedPage, total) {
+        if (selectedPage === 1 || total === 0) {
+            return;
+        }
+
+        const link = document.createElement('a');
+        const pageSize = document.getElementById('page-size').value;
+        link.href = `/consultations?selectedPage=${selectedPage - 1}&pageSize=${pageSize}`;
+        
+        link.click();
+    }
+
+    function onNextPageclick(selectedPage, pages, total) {
+        if(selectedPage === pages || total === 0) {
+            return;
+        }
+
+        const link = document.createElement('a');
+        const pageSize = document.getElementById('page-size').value;
+        link.href = `/consultations?selectedPage=${selectedPage + 1}&pageSize=${pageSize}`;
+        
+        link.click();
+    }
+
+    function onMoveLastClick(pages, total) {
+        if (total === 0) return;
+
+        const link = document.createElement('a');
+        const pageSize = document.getElementById('page-size').value;
+        link.href = `/consultations?&selectedPage=${pages}&pageSize${pageSize}`;
+
+        link.click();
+    }
+</script>

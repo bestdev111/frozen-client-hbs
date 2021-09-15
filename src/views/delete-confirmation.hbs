@@ -1,0 +1,23 @@
+<!-- BEGIN: Delete Confirmation Modal -->
+<div id="delete-confirmation-modal-{{id}}" class="modal" tabindex="-1" aria-hidden="true">
+    <form class="modal-dialog" method="POST" action="/{{entity}}/{{id}}?_method=DELETE" enctype="application/x-www-form-urlencoded">
+        <div class="modal-content">
+            <div class="modal-body p-0">
+                <div class="p-5 text-center">
+                    <i data-feather="x-circle" class="w-16 h-16 text-theme-6 mx-auto mt-3"></i> 
+                    <div class="text-3xl mt-5">Etes-vous sûr?</div>
+                    <div class="text-gray-600 mt-2">
+                        Voulez-vous vraiment supprimer cet enregistrement? 
+                        <br>
+                        Cette operation ne peut être annulée.
+                    </div>
+                </div>
+                <div class="px-5 pb-8 text-center">
+                    <button type="button" data-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Annuller</button>
+                    <button type="submit" data-dismiss="modal" class="btn btn-danger w-24" onclick="">Supprimer</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- END: Delete Confirmation Modal -->

@@ -1,0 +1,137 @@
+{{#extend "index"}}
+    {{#content "main"}}
+        <h2 class="intro-y text-lg font-medium mt-10">
+        Liste des consultations en attente
+        </h2>
+        <div class="grid grid-cols-12 gap-6 mt-5">
+        <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
+            <button class="btn btn-primary shadow-md mr-2">Nouvelle consultation</button>
+            <div class="dropdown">
+                <button class="dropdown-toggle btn px-2 box text-gray-700 dark:text-gray-300" aria-expanded="false">
+                    <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-feather="plus"></i> </span>
+                </button>
+                <div class="dropdown-menu w-40">
+                    <div class="dropdown-menu__content box dark:bg-dark-1 p-2">
+                        <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md"> <i data-feather="printer" class="w-4 h-4 mr-2"></i> Print </a>
+                        <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md"> <i data-feather="file-text" class="w-4 h-4 mr-2"></i> Export to Excel </a>
+                        <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md"> <i data-feather="file-text" class="w-4 h-4 mr-2"></i> Export to PDF </a>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden md:block mx-auto text-gray-600">Showing {{ offset }} to {{ count }} of {{ total }} entries</div>
+            <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
+                <div class="w-56 relative text-gray-700 dark:text-gray-300">
+                    <input type="text" class="form-control w-56 box pr-10 placeholder-theme-13" placeholder="Search...">
+                    <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-feather="search"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
+            <table class="table table-report -mt-2">
+                <thead>
+                    <tr>
+                        <th class="whitespace-nowrap">IMAGES</th>
+                        <th class="whitespace-nowrap">PATIENT</th>
+                        <th class="text-center whitespace-nowrap">DATE</th>
+                        <th class="text-center whitespace-nowrap">STATUS</th>
+                        <th class="text-center whitespace-nowrap">ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each consultations as |consultation|}}
+                        <tr class="intro-x">
+                            <td class="w-40">
+                                <div class="flex">
+                                    <div class="w-10 h-10 image-fit zoom-in">
+                                        <img alt="Rubick Tailwind HTML Admin Template" class="tooltip rounded-full" src="/images/preview-14.jpg" title="Uploaded at 20 April 2022">
+                                    </div>
+                                    <div class="w-10 h-10 image-fit zoom-in -ml-5">
+                                        <img alt="Rubick Tailwind HTML Admin Template" class="tooltip rounded-full" src="/images/preview-8.jpg" title="Uploaded at 20 April 2022">
+                                    </div>
+                                    <div class="w-10 h-10 image-fit zoom-in -ml-5">
+                                        <img alt="Rubick Tailwind HTML Admin Template" class="tooltip rounded-full" src="/images/preview-9.jpg" title="Uploaded at 20 April 2022">
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <a href="/{{#eq consultation.status 'NURSING'}}nursing{{/eq}}{{#eq consultation.status 'EN_COURS'}}box{{/eq}}/consultations/{{consultation.id}}" class="font-medium whitespace-nowrap">{{ consultation.Client.nom }}&nbsp;{{ consultation.Client.prenom }} {{scope}}</a>
+                                <div class="text-gray-600 text-xs whitespace-nowrap mt-0.5">{{ consultation.Medecin?.nom }}&nbsp;{{ consultation.Medecin?.prenom }}</div>
+                            </td>
+                            <td class="text-center">{{ consultation.createdAt }}</td>
+                            <td class="w-40">
+                                <div class="flex items-center justify-center {{getStatusTheme consultation.status}}">
+                                    <i data-feather="{{getStatusIcon consultation.status}}" class="w-4 h-4 mr-2"></i>
+                                    {{ consultation.statusFormatted }}
+                                </div>
+                            </td>
+                            <td class="table-report__action w-56">
+                                <div class="flex justify-center items-center">
+                                    <a class="flex items-center mr-3" href="/consultations/{{consultation.id}}"> <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Modifier </a>
+                                    <a class="flex items-center text-theme-6" href="javascript:;" data-toggle="modal" data-target="#delete-confirmation-modal-{{consultation.id}}"> <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Supprimer </a>
+                                </div>
+                            </td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <!-- END: Data List -->
+
+        <!-- BEGIN: Pagination -->
+        {{> pagination-scripts}}
+        <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
+            <ul class="pagination">
+                <li>
+                    <a class="pagination__link" href="javascript:;" onclick="onMoveFirstClick({{total}})"> <i class="w-4 h-4" data-feather="chevrons-left"></i> </a>
+                </li>
+                <li>
+                    <a class="pagination__link" href="javascript:;" onclick="onPreviousPageClick({{selectedPage}}, {{total}})"> <i class="w-4 h-4" data-feather="chevron-left"></i> </a>
+                </li>
+                <li> <a class="pagination__link" href="javascript:;">...</a> </li>
+                {{#times pages}}
+                    <li>
+                        <a 
+                            {{#if @selected }}class="pagination__link pagination__link--active"
+                            {{else}}class="pagination__link"
+                            {{/if}}
+                            href="javascript:;"
+                            onclick="onPageLinkClick({{@index}})">
+                                {{@index}}
+                        </a>
+                    </li>
+                {{/times}}
+                <li> <a class="pagination__link" href="javascript:;">...</a> </li>
+                <li>
+                    <a class="pagination__link" href="javascript:;" onclick="onNextPageclick({{selectedPage}}, {{pages}}, {{total}})"> <i class="w-4 h-4" data-feather="chevron-right"></i> </a>
+                </li>
+                <li>
+                    <a class="pagination__link" href="javascript:;" onclick="onMoveLastClick({{pages}}, {{total}})"> <i class="w-4 h-4" data-feather="chevrons-right"></i> </a>
+                </li>
+            </ul>
+
+            <script>
+                function onPageSizeChange(control) {
+                    const link = document.createElement('a');
+                    const pageSize = control.value;
+                    link.href = `/consultations?selectedPage={{selectedPage}}&pageSize=${pageSize}`;
+                    
+                    link.click();
+                }
+            </script>
+            <select id="page-size" class="w-20 form-select box mt-3 sm:mt-0" value="{{pageSize}}" onchange="onPageSizeChange(this)">
+                <option value="10" {{#eq pageSize 10}}selected{{/eq}}>10</option>
+                <option value="25" {{#eq pageSize 25}}selected{{/eq}}>25</option>
+                <option value="35" {{#eq pageSize 35}}selected{{/eq}}>35</option>
+                <option value="50" {{#eq pageSize 50}}selected{{/eq}}>50</option>
+            </select>
+        </div>
+        <!-- END: Pagination -->
+        </div>
+        
+        <!-- Delete confirmation modal -->
+        {{#each consultations as |consultation|}}
+            {{> delete-confirmation entity="consultations" id=consultation.id }}
+        {{/each}}
+    {{/content}}
+{{/extend}}

@@ -1,0 +1,536 @@
+[
+  {
+    "category": "Hémogramme complet",
+    "exams": [
+      {
+        "name": "GB",
+        "referential": {
+          "low": 4000,
+          "high": 10000,
+          "unit": "mm3"
+        }
+      },
+      {
+        "name": "Formules leucocytaires",
+        "referential": [
+          {
+            "prefix": "N",
+            "low": 35,
+            "high": 65,
+            "unit": "%"
+          },
+          {
+            "prefix": "L",
+            "low": 20,
+            "high": 40,
+            "unit": "%"
+          },
+          {
+            "prefix": "M",
+            "low": 1,
+            "high": 6,
+            "unit": "%"
+          },
+          {
+            "prefix": "E",
+            "low": 1,
+            "high": 5,
+            "unit": "%"
+          },
+          {
+            "prefix": "B",
+            "low": 0,
+            "high": 1,
+            "unit": "%"
+          }
+        ]
+      },
+      {
+        "name": "GR",
+        "referential": {
+          "low": 3600000,
+          "high": 5500000,
+          "unit": "mm3"
+        }
+      },
+      {
+        "name": "Plaquettes",
+        "referential": {
+          "low": 150000,
+          "high": 400000,
+          "unit": "mm3"
+        }
+      },
+      {
+        "name": "Hb",
+        "referential": {
+          "low": 11,
+          "high": 16,
+          "unit": "dl"
+        }
+      },
+      {
+        "name": "Hct",
+        "referential": {
+          "low": 37,
+          "high": 54,
+          "unit": "%"
+        }
+      },
+      {
+        "name": "VGM",
+        "referential": {
+          "low": 80,
+          "high": 100,
+          "unit": "fl"
+        }
+      },
+      {
+        "name": "CCMH",
+        "referential": {
+          "low": 32,
+          "high": 38,
+          "unit": "%"
+        }
+      },
+      {
+        "name": "TCMH",
+        "referential": {
+          "low": 26,
+          "high": 32,
+          "unit": "pg"
+        }
+      },
+      {
+        "name": "NLR (Rapport Neutro-Lympho.)"
+      },
+      {
+        "name": "Réticulocytes"
+      }
+    ]
+  },
+  {
+    "category": "Biochimie",
+    "exams": [
+      {
+        "name": "Urée",
+        "referential": {
+          "low": 15,
+          "high": 45,
+          "unit": "mg/dl"
+        }
+      },
+      {
+        "name": "Créatinine",
+        "referential": {
+          "low": 0.6,
+          "high": 0.2,
+          "unit": "mg/dl"
+        }
+      },
+      {
+        "name": "Glucose",
+        "referential": {
+          "low": 60,
+          "high": 110,
+          "unit": "mg/dl"
+        }
+      },
+      {
+        "name": "GOT",
+        "referential": {
+          "lowerThan": 40,
+          "unit": "U/l"
+        }
+      },
+      {
+        "name": "GPT",
+        "referential": {
+          "lowerThan": 40,
+          "unit": "U/l"
+        }
+      },
+      {
+        "name": "Bilirubine Total",
+        "referential": {
+          "equalTo": 1.1,
+          "unit": "mg/dl"
+        }
+      },
+      {
+        "name": "Bilirubine Directe",
+        "referential": {
+          "equalTo": 0.25,
+          "unit": "mg/dl"
+        }
+      },
+      {
+        "name": "Bilirubine Indirecte"
+      },
+      {
+        "name": "Cholésterol Total",
+        "referential": {
+          "lowerThan": 200,
+          "unit": "mg/dl"
+        }
+      },
+      {
+        "name": "HDL",
+        "referential": {
+          "low": 35,
+          "high": 65,
+          "unit": "mg/dl"
+        }
+      },
+      {
+        "name": "Triglycérides",
+        "referential": {
+          "lowerThan": 150,
+          "unit": "mg/dl"
+        }
+      },
+      {
+        "name": "LDL",
+        "referential": {
+          "lowerThan": 190,
+          "unit": "mg/dl"
+        }
+      },
+      {
+        "name": "LDH",
+        "referential": {
+          "low": 250,
+          "high": 460,
+          "unit": "U/l"
+        }
+      },
+      {
+        "name": "Acide Urique",
+        "referential": {
+          "low": 2.5,
+          "high": 7.7,
+          "unit": "mg/dl"
+        }
+      },
+      {
+        "name": "Albumine",
+        "referential": {
+          "low": 3.5,
+          "high": 5,
+          "unit": "mg/dl"
+        }
+      },
+      {
+        "name": "Phosphore",
+        "referential": {
+          "low": 2.5,
+          "high": 5,
+          "unit": "mg/dl"
+        }
+      },
+      {
+        "name": "Protéïnes sériques",
+        "referential": {
+          "low": 6.6,
+          "high": 6.7,
+          "unit": "mg/dl"
+        }
+      },
+      {
+        "name": "Magnésium",
+        "referential": {
+          "low": 1.6,
+          "high": 2.5,
+          "unit": "mg/dl"
+        }
+      },
+      {
+        "name": "Protéines de 24 heures",
+        "referential": {
+          "lowerThan": 100,
+          "unit": "mg/24heures"
+        }
+      },
+      {
+        "name": "Lipides totaux",
+        "referential": {
+          "low": 400,
+          "high": 800,
+          "unit": "mg/dl"
+        }
+      }
+    ]
+  },
+  {
+    "category": "Immunologie",
+    "exams": [
+      {
+        "name": "CRP Quantitative",
+        "referential": {
+          "low": 0,
+          "high": 10,
+          "unit": "mg/l"
+        }
+      },
+      {
+        "name": "TPSA Quantitative",
+        "referential": {
+          "low": 0,
+          "high": 4,
+          "unit": "ng/ml"
+        }
+      },
+      {
+        "name": "FPSA Quantitative",
+        "referential": {
+          "low": 0,
+          "high": 1,
+          "unit": "ng/ml"
+        }
+      },
+      {
+        "name": "NT - ProBNP",
+        "referential": {
+          "low": 0,
+          "high": 300,
+          "unit": "pg/ml"
+        }
+      },
+      {
+        "name": "CK - MB",
+        "referential": {
+          "low": 0,
+          "high": 5,
+          "unit": "ng/ml"
+        }
+      },
+      {
+        "name": "Troponine",
+        "referential": {
+          "low": 0,
+          "high": 0.5,
+          "unit": "ng/ml"
+        }
+      },
+      {
+        "name": "LH"
+      },
+      {
+        "name": "FSH",
+        "referential": {
+          "low": 0,
+          "high": 17.47,
+          "unit": "ng/ml"
+        }
+      },
+      {
+        "name": "Prolactine",
+        "referential": {
+          "low": 3,
+          "high": 25,
+          "unit": "ng/ml"
+        }
+      },
+      {
+        "name": "D - Dimer",
+        "referential": {
+          "low": 0,
+          "high": 500,
+          "unit": "ng/ml"
+        }
+      },
+      {
+        "name": "Affafoetoprotéines",
+        "referential": {
+          "low": 0,
+          "high": 20,
+          "unit": "ng/ml"
+        }
+      }
+    ]
+  },
+  {
+    "category": "Sérologie",
+    "exams": [
+      {
+        "name": "CRP Qualitative"
+      },
+      {
+        "name": "HIV"
+      },
+      {
+        "name": "HCV"
+      },
+      {
+        "name": "HBS"
+      },
+      {
+        "name": "Facteur rhumatoide"
+      },
+      {
+        "name": "Hélicobacter pylori"
+      },
+      {
+        "name": "ASLO"
+      },
+      {
+        "name": "VDRL"
+      }
+    ]
+  },
+  {
+    "category": "Bandelette urinaire (Liquide pleural)",
+    "exams": [
+      {
+        "name": "Leucocytes"
+      },
+      {
+        "name": "Nitrite"
+      },
+      {
+        "name": "Urobilinogène"
+      },
+      {
+        "name": "Protéine"
+      },
+      {
+        "name": "pH"
+      },
+      {
+        "name": "Sang"
+      },
+      {
+        "name": "Densité"
+      },
+      {
+        "name": "Cétone"
+      },
+      {
+        "name": "Bilirubine"
+      },
+      {
+        "name": "Glucose"
+      },
+      {
+        "name": "Acide ascorbique"
+      }
+    ]
+  },
+  {
+    "category": "Coloration de Gram",
+    "exams": [
+      { "name": "Coloration de Gram" }
+    ]
+  },
+  {
+    "category": "Bilan de routine",
+    "exams": [
+      {
+        "name": "Hct",
+        "referencial": {
+          "unit": "%"
+        }
+      },
+      {
+        "name": "Hb",
+        "referencial": {
+          "unit": "g/dl"
+        }
+      },
+      {
+        "name": "GE",
+        "referencial": {
+          "unit": "Tropho/µl"
+        }
+      },
+      {
+        "name": "GF"
+      },
+      {
+        "name": "GB",
+        "referencial": {
+          "unit": "mm3"
+        }
+      },
+      {
+        "name": "VS",
+        "subExams": [
+          {
+            "name": "N",
+            "referencial": {
+              "unit": "%"
+            }
+          },
+          {
+            "name": "L",
+            "referencial": {
+              "unit": "%"
+            }
+          },
+          {
+            "name": "M",
+            "referencial": {
+              "unit": "%"
+            }
+          },
+          {
+            "name": "E",
+            "referencial": {
+              "unit": "%"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Glycémie",
+        "referencial": {
+          "unit": "mg/dl"
+        }
+      },
+      {
+        "name": "Gr. Sanguin",
+        "referencial": {
+          "unit": "mg/dl"
+        }
+      },
+      {
+        "name": "Rh"
+      },
+      {
+        "name": "TS"
+      },
+      {
+        "name": "TC"
+      },
+      {
+        "name": "CRP latex",
+        "referencial": {
+          "unit": "mg/dl"
+        }
+      },
+      {
+        "name": "aslo LATEX"
+      },
+      {
+        "name": "Widal",
+        "subExams": [
+          {
+            "name": "TO"
+          },
+          {
+            "name": "TH"
+          }
+        ]
+      },
+      {
+        "name": "Séd Urinaires"
+      },
+      {
+        "name": "Selles"
+      },
+      {
+        "name": "Frottis vaginal"
+      }
+    ]
+  }
+]

@@ -1,0 +1,29 @@
+<!-- BEGIN: Multiple Select -->
+<div id="imagery-modal" class="modal" tabindex="-1" aria-hidden="true">
+    <form id="imagery-exam-order-form" class="modal-dialog intro-y box mt-5 grid grid-cols-1 lg:grid-cols-2" action="/imagery/exams" method="POST" enctype="application/x-www-form-urlencoded">
+        <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5 col-span-2">
+            <h2 class="font-medium text-base mr-auto">
+                Examens d'imagerie
+            </h2>
+        </div>
+        <input type="hidden" name="consultationId" value="{{consultation.id}}"/>
+        {{#each imageryConfig as |imageryCategory|}}
+        <div class="p-5 col-span-1 multiple-select">
+            <h3 class="font-small text-md mr-auto">{{imageryCategory.category}}</h3>
+            <div class="preview" data-category="{{imageryCategory.category}}">
+                <select name="{{imageryCategory.category}}" data-placeholder="Select your favorite actors" class="tom-select w-full" multiple>
+                    {{#each imageryCategory.exams as |exam|}}
+                    <option value="{{exam.name}}">{{exam.name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+        {{/each}}
+
+        <div class="flex justify-end mt-4 col-span-2 ml-5 mb-5 mr-5">
+            <button type="submit" id="submit-prescription" class="btn btn-primary w-20 mr-auto" data-dismiss="modal">Enregistrer</button>
+            <a href="javascript:;" class="text-theme-6 flex items-center" data-dismiss="modal"> <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Annuler </a>
+        </div>
+    </form>
+</div>
+<!-- END: Multiple Select -->

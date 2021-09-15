@@ -1,0 +1,35 @@
+#!/bin/bash
+
+checkReturnStatus() {
+  if [ $? -eq 0 ]
+  then
+    echo -en $1
+  else 
+    echo -en $2
+    exit  1
+  fi
+}
+
+echo -n -e "Flushing dist\n"
+rm -rf ./dist
+
+echo -n -e "Prettier check\n\n"
+yarn prettier:check
+checkReturnStatus "Done check with prettier\n\n" "Prettier error\n\n"
+
+echo -n -e "Linting\n"
+yarn run lint --fix
+checkReturnStatus "Done linting\n\n" "Error while linting\n\n"
+
+
+echo "Compiling"
+yarn run tsc
+checkReturnStatus "Done compiling\n\n" "Error while compiling\n\n"
+
+echo "Copying assets"
+cp -rf public dist/public
+checkReturnStatus "Done copying assets\n\n" "Error while copying assets\n\n"
+
+echo "Building assets"
+yarn mix
+checkReturnStatus "Done building assests\n\n" "Error while building assets\n\n"

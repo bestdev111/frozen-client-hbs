@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+  <!-- BEGIN: Head -->
+  <head>
+      <meta charset="utf-8">
+      <link href="/images/logo.svg" rel="shortcut icon">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Rubick admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
+      <meta name="keywords" content="admin template, Rubick Admin Template, dashboard template, flat admin template, responsive admin template, web app">
+      <meta name="author" content="LEFT4CODE">
+      <title>Service Santé - PNC</title>
+      <!-- BEGIN: CSS Assets-->
+      <link rel="stylesheet" href="/css/app.css" />
+      <!-- END: CSS Assets-->
+  </head>
+  <!-- END: Head -->
+  <body class="main">
+    <div class="flex">
+      {{> sidenav }}
+      
+      <div class="content">
+        {{#block "main"}}
+        {{/block}}
+      </div>
+    </div>
+
+    <script src="/js/app.js"></script>
+  </body>
+</html>

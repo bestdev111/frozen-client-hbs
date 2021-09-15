@@ -1,0 +1,63 @@
+<div id="prescription-modal" class="modal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog intro-y box mt-5">
+    <div class="flex items-center p-5 border-b border-gray-200 dark:border-dark-5">
+        <h2 class="font-medium text-base mr-auto">
+            Nouvelle prescription
+        </h2>
+    </div>
+    <div class="p-5">
+        <div class="grid grid-cols-12 gap-x-5">
+          <form class="col-span-12 xl:col-span-6" id="add-product-form" class="validate-form" onsubmit="return false">
+            <div>
+                <label for="product" class="form-label">Produit</label>
+                <input id="product" type="text" class="form-control" placeholder="Aspirine" value="" required>
+            </div>
+            <div class="mt-3">
+                <label for="unit" class="form-label">Unité</label>
+                <input id="unit" type="text" class="form-control" placeholder="Comprimé/Cuillérée" value="" required>
+            </div>
+            <div class="mt-3">
+                <label for="quantity" class="form-label">Quantité</label>
+                <input id="quantity" name="quantity" type="number" class="form-control" placeholder="" value="" required>
+            </div>
+            <div class="mt-3">
+                <label for="dosage" class="form-label">Nombre de prises par jour</label>
+                <input id="dosage" type="number" class="form-control" placeholder="Nombre de prises par jour" value="" required>
+            </div>
+            <div class="mt-3">
+                <label for="duration" class="form-label">Durée</label>
+                <input id="duration" type="number" class="form-control" placeholder="Durée du traitement" value="Leonardo DiCaprio">
+            </div>
+            <div class="mt-3">
+              <button type="submit" id="add-prescription-item" class="btn btn-secondary w-20 mr-auto">Ajouter</button>
+            </div>
+          </form>
+        </div>
+
+        <form class="table" id="prescription-form" method="POST">
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">#</th>
+                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Produit</th>
+                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Dosage</th>
+                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Pendant</th>
+              </tr>
+            </thead>
+            <tbody id="items-container">
+              <input id="departement-id" type="hidden" value="{{consultation.departement}}"/>
+              <input id="consultation-id" type="hidden" value="{{consultation.id}}"/>
+            </tbody>
+          </table>
+          <div id="inputs-container">
+            <input type="hidden" id="items-count"/>
+          </div>
+        </form>
+        
+        <div class="flex justify-end mt-4">
+            <button type="button" id="submit-prescription" class="btn btn-primary w-20 mr-auto" data-dismiss="modal">Enregistrer</button>
+            <a href="javascript:;" class="text-theme-6 flex items-center" data-dismiss="modal"> <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Annuler </a>
+        </div>
+    </div>
+  </div>
+</div>
